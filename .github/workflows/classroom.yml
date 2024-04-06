@@ -1,0 +1,192 @@
+name: Autograding Tests
+'on':
+- push
+- workflow_dispatch
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Test1
+      id: test1
+      uses: education/autograding-io-grader@v1
+      with:
+        test-name: Test1
+        setup-command: make main
+        command: "./main"
+        input: "3\r\nMasanis Pilpres 40971906\r\nPrabroro Pilpres 96214691\r\nJanggar
+          Pilpres 27040878"
+        expected-output: "Masukkan jumlah kader partai: \r\nInformasi kader ke-1 :
+          \r\nInformasi kader ke-2 : \r\nInformasi kader ke-3 : \r\n\r\nAnggota Dewan
+          Perwakilan Rakyat Anti Korupsi (DPRAK) tahun 2024\r\nPrabroro Pilpres 96214691\r\nSemoga
+          amanah Anti Korupsi #WakandaForever"
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Test2
+      id: test2
+      uses: education/autograding-io-grader@v1
+      with:
+        test-name: Test2
+        setup-command: make main
+        command: "./main"
+        input: "1\r\nRama Beramian 100"
+        expected-output: "Masukkan jumlah kader partai: \r\nInformasi kader ke-1 :
+          \r\n\r\nAnggota Dewan Perwakilan Rakyat Anti Korupsi (DPRAK) tahun 2024\r\nRama
+          Beramian 100\r\nSemoga amanah Anti Korupsi #WakandaForever"
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Test3
+      id: test3
+      uses: education/autograding-io-grader@v1
+      with:
+        test-name: Test3
+        setup-command: make main
+        command: "./main"
+        input: "4\r\nRidwan Gokar 1500\r\nRajasa PAN 1000\r\nGiring PSI 123\r\nMelly
+          PDIP 700"
+        expected-output: "Masukkan jumlah kader partai: \r\nInformasi kader ke-1 :
+          \r\nInformasi kader ke-2 : \r\nInformasi kader ke-3 : \r\nInformasi kader
+          ke-4 : \r\n\r\nAnggota Dewan Perwakilan Rakyat Anti Korupsi (DPRAK) tahun
+          2024\r\nRidwan Gokar 1500\r\nRajasa PAN 1000\r\nMelly PDIP 700\r\nSemoga
+          amanah Anti Korupsi #WakandaForever"
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Test4
+      id: test4
+      uses: education/autograding-io-grader@v1
+      with:
+        test-name: Test4
+        setup-command: make main
+        command: "./main"
+        input: "5\r\nNastar NASDEMO 999\r\nPancake PAN 102\r\nBolu PAN 300\r\nTapai
+          NASDEMO 500\r\nTiramisu PKN 22"
+        expected-output: "Masukkan jumlah kader partai: \r\nInformasi kader ke-1 :
+          \r\nInformasi kader ke-2 : \r\nInformasi kader ke-3 : \r\nInformasi kader
+          ke-4 : \r\nInformasi kader ke-5 : \r\n\r\nAnggota Dewan Perwakilan Rakyat
+          Anti Korupsi (DPRAK) tahun 2024\r\nNastar NASDEMO 999\r\nBolu PAN 300\r\nSemoga
+          amanah Anti Korupsi #WakandaForever"
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Test5
+      id: test5
+      uses: education/autograding-io-grader@v1
+      with:
+        test-name: Test5
+        setup-command: make main
+        command: "./main"
+        input: "4\r\nAbang Demokeras 2000\r\nAdik Demokeras 1999\r\nNeng PKSS 2001\r\nBungsu
+          PKSS 2000"
+        expected-output: "Masukkan jumlah kader partai: \r\nInformasi kader ke-1 :
+          \r\nInformasi kader ke-2 : \r\nInformasi kader ke-3 : \r\nInformasi kader
+          ke-4 : \r\n\r\nAnggota Dewan Perwakilan Rakyat Anti Korupsi (DPRAK) tahun
+          2024\r\nAbang Demokeras 2000\r\nNeng PKSS 2001\r\nSemoga amanah Anti Korupsi
+          #WakandaForever"
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Test6
+      id: test6
+      uses: education/autograding-io-grader@v1
+      with:
+        test-name: Test6
+        setup-command: make main
+        command: "./main"
+        input: "2\r\nIndomie Goreng 1000000000\r\nSedap Goreng 100"
+        expected-output: "Masukkan jumlah kader partai: \r\nInformasi kader ke-1 :
+          \r\nInformasi kader ke-2 : \r\n\r\nAnggota Dewan Perwakilan Rakyat Anti
+          Korupsi (DPRAK) tahun 2024\r\nIndomie Goreng 1000000000\r\nSemoga amanah
+          Anti Korupsi #WakandaForever"
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Test7
+      id: test7
+      uses: education/autograding-io-grader@v1
+      with:
+        test-name: Test7
+        setup-command: make main
+        command: "./main"
+        input: "6\r\nLisa Blackpink 90\r\nJihyo Twice 1000\r\nDanielle NewJeans 90\r\nTzuyu
+          Twice 101\r\nJennie Blackpink 89\r\nHyein NewJeans 80"
+        expected-output: "Masukkan jumlah kader partai: \r\nInformasi kader ke-1 :
+          \r\nInformasi kader ke-2 : \r\nInformasi kader ke-3 : \r\nInformasi kader
+          ke-4 : \r\nInformasi kader ke-5 : \r\nInformasi kader ke-6 : \r\n\r\nAnggota
+          Dewan Perwakilan Rakyat Anti Korupsi (DPRAK) tahun 2024\r\nLisa Blackpink
+          90\r\nJihyo Twice 1000\r\nDanielle NewJeans 90\r\nSemoga amanah Anti Korupsi
+          #WakandaForever"
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Test8
+      id: test8
+      uses: education/autograding-io-grader@v1
+      with:
+        test-name: Test8
+        setup-command: make main
+        command: "./main"
+        input: "5\r\nAsep SundaGenZ 1000\r\nNana SundaGenX 1\r\nIra SundaGenZ 2\r\nDidin
+          SundaGenA 3\r\nGeulis SundaGenX 4"
+        expected-output: "Masukkan jumlah kader partai: \r\nInformasi kader ke-1 :
+          \r\nInformasi kader ke-2 : \r\nInformasi kader ke-3 : \r\nInformasi kader
+          ke-4 : \r\nInformasi kader ke-5 : \r\n\r\nAnggota Dewan Perwakilan Rakyat
+          Anti Korupsi (DPRAK) tahun 2024\r\nAsep SundaGenZ 1000\r\nSemoga amanah
+          Anti Korupsi #WakandaForever"
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Test9
+      id: test9
+      uses: education/autograding-io-grader@v1
+      with:
+        test-name: Test9
+        setup-command: make main
+        command: "./main"
+        input: "2\r\nBiden Demokrat 270\r\nTrump Republik 25"
+        expected-output: "Masukkan jumlah kader partai: \r\nInformasi kader ke-1 :
+          \r\nInformasi kader ke-2 : \r\n\r\nAnggota Dewan Perwakilan Rakyat Anti
+          Korupsi (DPRAK) tahun 2024\r\nBiden Demokrat 270\r\nSemoga amanah Anti Korupsi
+          #WakandaForever"
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Test10
+      id: test10
+      uses: education/autograding-io-grader@v1
+      with:
+        test-name: Test10
+        setup-command: make main
+        command: "./main"
+        input: "3\r\nKomeng Uhuyy 5000\r\nMegawati RedSparks 100\r\nSule OVJ 500"
+        expected-output: "Masukkan jumlah kader partai: \r\nInformasi kader ke-1 :
+          \r\nInformasi kader ke-2 : \r\nInformasi kader ke-3 : \r\n\r\nAnggota Dewan
+          Perwakilan Rakyat Anti Korupsi (DPRAK) tahun 2024\r\nKomeng Uhuyy 5000\r\nSemoga
+          amanah Anti Korupsi #WakandaForever"
+        comparison-method: contains
+        timeout: 5
+        max-score: 10
+    - name: Autograding Reporter
+      uses: education/autograding-grading-reporter@v1
+      env:
+        TEST1_RESULTS: "${{steps.test1.outputs.result}}"
+        TEST2_RESULTS: "${{steps.test2.outputs.result}}"
+        TEST3_RESULTS: "${{steps.test3.outputs.result}}"
+        TEST4_RESULTS: "${{steps.test4.outputs.result}}"
+        TEST5_RESULTS: "${{steps.test5.outputs.result}}"
+        TEST6_RESULTS: "${{steps.test6.outputs.result}}"
+        TEST7_RESULTS: "${{steps.test7.outputs.result}}"
+        TEST8_RESULTS: "${{steps.test8.outputs.result}}"
+        TEST9_RESULTS: "${{steps.test9.outputs.result}}"
+        TEST10_RESULTS: "${{steps.test10.outputs.result}}"
+      with:
+        runners: test1,test2,test3,test4,test5,test6,test7,test8,test9,test10
