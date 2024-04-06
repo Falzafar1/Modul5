@@ -47,7 +47,7 @@
 
     int main() {
         int i,j,n;
-        int kondisi =0;
+        int kondisi = 0;
         int total = 0;
         int totalkandidat = 0;
         int totalpartai =0;
@@ -76,6 +76,8 @@
                 totalpartai = totalpartai +1;
                 Partai = (Candidate*)realloc(Partai, totalpartai * sizeof(Candidate));
                 strcpy(Partai[totalpartai-1].party,candidates[i].party);
+            }
+            else{
                 kondisi = 0;
             }
         }
