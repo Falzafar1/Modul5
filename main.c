@@ -41,8 +41,8 @@
     }
 
     // Fungsi untuk mencari total suara 
-    int findTotalPartyVotes(Candidate* candidates, int i, int total) { 
-        return total + candidates[i].votes;
+    int findTotalPartyVotes(int x, int total) { 
+        return total + x;
     }
 
     int main() {
@@ -51,7 +51,6 @@
         int total = 0;
         int totalkandidat = 0;
         int totalpartai =0;
-        int VoteTertinggi = 0;
 
         // membuat input jumlah kader partai
         printf("Masukkan jumlah kader partai: \r\n");
@@ -66,7 +65,7 @@
             printf("Informasi kader ke-%d : \r\n", i+1);
             scanf("%s%s%d", candidates[i].name, candidates[i].party, &candidates[i].votes);
             totalkandidat = totalkandidat +1;
-            total = total + candidates[i].votes;
+            total = findTotalPartyVotes(candidates[i].votes,total);
             for ( j = 0; j < totalkandidat; j++){
                 if (strcmp(candidates[i].party, Partai[j].party) == 0){
                     kondisi = 1;
@@ -81,12 +80,12 @@
                 kondisi = 0;
             }
         }
+
         printf("\r\nAnggota Dewan Perwakilan Rakyat Anti Korupsi (DPRAK) tahun 2024\r\n");
         // Mencari kader yang lolos DPRAK
         for (i = 0; i < totalpartai; i++){
             isPartyWinner(candidates, n, total, Partai[i].party);
         }
-        
         printf("Semoga amanah Anti Korupsi #WakandaForever");
 
         // // // Membebaskan memori yang dialokasikan untuk array of struct
