@@ -26,7 +26,7 @@ int isPartyWinner(Candidate* candidates, int n, int total) {
     for (int i = 0; i < n; i++){
         persen =(double)candidates[i].votes/total;
         if (persen > 0.1){
-            printf("%s %s %d\n", candidates[i].name, candidates[i].party, candidates[i].votes);
+            printf("%s %s %d\r\n", candidates[i].name, candidates[i].party, candidates[i].votes);
         }    
     }
     return 0;  
@@ -44,7 +44,7 @@ int main() {
     int VoteTertinggi = 0;
 
     // membuat input jumlah kader partai
-    printf("Masukkan jumlah kader partai: ");
+    printf("Masukkan jumlah kader partai: \r\n");
     scanf("%d", &n);
 
     // Membuat array of struct untuk menyimpan informasi kader partai
@@ -52,7 +52,7 @@ int main() {
 
     // Membaca baris input informasi kader partai dan menyimpannya dalam array of struct
     for ( i = 0; i < n; i++){
-        printf("Informasi kader ke-%d : ", i+1);
+        printf("Informasi kader ke-%d : \r\n", i+1);
         scanf("%s%s%d", candidates[i].name, candidates[i].party, &candidates[i].votes);
         total = findTotalPartyVotes(candidates,i,total);
         totalelemen = totalelemen +1;
@@ -71,10 +71,10 @@ int main() {
         }
     }
     
-    printf("\nAnggota Dewan Perwakilan Rakyat Anti Korupsi (DPRAK) tahun 2024\n");
+    printf("\nAnggota Dewan Perwakilan Rakyat Anti Korupsi (DPRAK) tahun 2024\r\n");
     // Mencari kader yang lolos DPRAK
     isPartyWinner(candidates,n,total);
-    printf("Semoga amanah Anti Korupsi #WakandaForever\n");
+    printf("Semoga amanah Anti Korupsi #WakandaForever");
 
     // // // Membebaskan memori yang dialokasikan untuk array of struct
     free(candidates);
