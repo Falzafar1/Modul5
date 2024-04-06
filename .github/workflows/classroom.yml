@@ -121,10 +121,9 @@ jobs:
           Twice 101\r\nJennie Blackpink 89\r\nHyein NewJeans 80"
         expected-output: "Masukkan jumlah kader partai: \r\nInformasi kader ke-1 :
           \r\nInformasi kader ke-2 : \r\nInformasi kader ke-3 : \r\nInformasi kader
-          ke-4 : \r\nInformasi kader ke-5 : \r\nInformasi kader ke-6 : \r\n\r\nAnggota
-          Dewan Perwakilan Rakyat Anti Korupsi (DPRAK) tahun 2024\r\nLisa Blackpink
-          90\r\nJihyo Twice 1000\r\nDanielle NewJeans 90\r\nSemoga amanah Anti Korupsi
-          #WakandaForever"
+          ke-4 : \r\nInformasi kader ke-5 : \r\nInformasi kader ke-6 : \r\n\r\nAnggota 
+          Dewan Perwakilan Rakyat Anti Korupsi (DPRAK) tahun 2024\r\nJihyo Twice 1000
+          \r\nSemoga amanah Anti Korupsi #WakandaForever"
         comparison-method: contains
         timeout: 5
         max-score: 10
